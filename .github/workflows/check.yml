@@ -25,4 +25,4 @@ jobs:
           playwright install chromium
 
       - name: Run script
-        run: python check_timetable.py
+        run: python script.py
