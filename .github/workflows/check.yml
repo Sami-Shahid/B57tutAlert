@@ -1,0 +1,28 @@
+name: UofT Timetable Watcher
+
+on:
+  schedule:
+    - cron: "*/30 * * * *" 
+  workflow_dispatch:
+
+jobs:
+  run-checker:
+    runs-on: ubuntu-latest
+    env:
+      ALERTZY_KEY: ${{ secrets.ALERTZY_KEY }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+          pip install playwright
+          playwright install chromium
+
+      - name: Run script
+        run: python check_timetable.py
