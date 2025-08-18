@@ -2,7 +2,7 @@ name: UofT Timetable Watcher
 
 on:
   schedule:
-    - cron: "*/30 * * * *" 
+    - cron: "*/9999999 * * * *" 
   workflow_dispatch:
 
 jobs:
